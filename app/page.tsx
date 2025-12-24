@@ -3,6 +3,7 @@ import AboutSection from "@/components/about-section"
 import ProductSection from "@/components/product-section"
 import Footer from "@/components/footer"
 import WhatsAppButton from "@/components/whatsapp-button"
+import NewFiltersSection from "@/components/new-filters-section"
 import type { Metadata } from "next" // Importar Metadata
 
 // Definir los metadatos para la página
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   title: "Distribuidora Filcam",
   description: "Distribuidor oficial de filtros con más de 40 años de experiencia.",
   icons: {
-    icon: "/logo-filcam-distribuidora.png", // Usar el logo como favicon
+    icon: "/logo-filcam-distribuidora.png",
   },
 }
 
@@ -27,6 +28,7 @@ export default function Home() {
             </p>
           </div>
         </section>
+        <NewFiltersSection />
         <AboutSection />
         <ProductSection />
       </main>

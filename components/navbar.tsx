@@ -31,6 +31,9 @@ export default function Navbar() {
         <Link href="/#products" className="hover:underline underline-offset-4" prefetch={false}>
           Productos
         </Link>
+        <Link href="/lista-precios" className="hover:underline underline-offset-4" prefetch={false}>
+          Lista Precios Clientes
+        </Link>
         <Link href="/contacto" className="hover:underline underline-offset-4" prefetch={false}>
           Contacto
         </Link>

@@ -28,6 +28,9 @@ export default function Footer() {
           <Link href="/contacto" className="hover:underline underline-offset-4 text-sm" prefetch={false}>
             Contacto
           </Link>
+          <Link href="/admin" className="hover:underline underline-offset-4 text-sm text-filcam-teal font-semibold" prefetch={false}>
+            Admin
+          </Link>
         </nav>
         <p className="text-sm text-center md:text-right">
           &copy; {new Date().getFullYear()} Distribuidora FILCAM. Todos los derechos reservados.

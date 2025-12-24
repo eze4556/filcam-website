@@ -1,11 +1,34 @@
 "use client"
 
-import { Phone, Mail, MapPin, Clock } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, Package, Truck } from "lucide-react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import WhatsAppButton from "@/components/whatsapp-button"
 
 export default function ContactoPage() {
+  const handleEmailClick = (type: 'consulta' | 'pedido') => {
+    const email = 'filtrosfilcam@hotmail.com'
+    const subject = type === 'consulta' ? 'Consulta Filcam' : 'Pedido Filcam'
+    const body = type === 'consulta' 
+      ? 'Hola, necesito información sobre sus productos.'
+      : 'Hola, me interesa realizar un pedido de sus productos.'
+    
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    
+    // Intentar abrir el mailto
+    const link = document.createElement('a')
+    link.href = mailtoLink
+    link.click()
+    
+    // Fallback: mostrar información si no se abre el email
+    setTimeout(() => {
+      const shouldShowFallback = !document.hidden && !window.navigator.userAgent.includes('Mobile')
+      if (shouldShowFallback) {
+        alert(`Si no se abrió tu cliente de email, puedes copiar esta dirección:\n\n${email}\n\nAsunto: ${subject}\n\nMensaje: ${body}`)
+      }
+    }, 1000)
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -43,9 +66,12 @@ export default function ContactoPage() {
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">Email</h3>
                 <p className="text-gray-600 mb-4">Escribenos tu consulta</p>
-                <a href="mailto:info@filcam.com.ar" className="text-filcam-teal font-semibold hover:underline text-lg">
-                  info@filcam.com.ar
-                </a>
+                <button 
+                  onClick={() => handleEmailClick('consulta')}
+                  className="text-filcam-teal font-semibold hover:underline text-lg cursor-pointer"
+                >
+                  filtrosfilcam@hotmail.com
+                </button>
               </div>
 
               {/* Dirección */}
@@ -54,31 +80,52 @@ export default function ContactoPage() {
                   <MapPin className="h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">Dirección</h3>
-                <p className="text-gray-600 mb-4">Visitanos en nuestro local</p>
+                <p className="text-gray-600 mb-4">Próximamente</p>
                 <address className="text-filcam-teal font-semibold not-italic">
-                  Av. San Martín 1234
+                  Parque Industrial Roldán
                   <br />
-                  Rosario, Santa Fe
+                  Provincia de Santa Fe
                   <br />
-                  Argentina (2000)
+                  Argentina
                 </address>
               </div>
             </div>
 
-            {/* Horarios */}
+            {/* Información de Ventas */}
             <div className="mt-12 bg-filcam-teal text-white rounded-lg p-8">
               <div className="flex items-center justify-center mb-6">
-                <Clock className="h-8 w-8 mr-3" />
-                <h3 className="text-2xl font-semibold">Horarios de Atención</h3>
+                <Truck className="h-8 w-8 mr-3" />
+                <h3 className="text-2xl font-semibold">Ventas</h3>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
-                <div>
-                  <h4 className="font-semibold mb-2">Lunes a Viernes</h4>
-                  <p className="text-teal-100">8:00 - 18:00 hs</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-2">Sábados</h4>
-                  <p className="text-teal-100">8:00 - 13:00 hs</p>
+              <div className="text-center">
+                <p className="text-xl font-semibold mb-4">Enviamos pedidos a todo el país</p>
+                <p className="text-teal-100 text-lg">Amplio Stock</p>
+              </div>
+            </div>
+
+            {/* Información de Pedidos */}
+            <div className="mt-8 bg-gray-50 rounded-lg p-8">
+              <div className="flex items-center justify-center mb-6">
+                <Package className="h-8 w-8 mr-3 text-filcam-teal" />
+                <h3 className="text-2xl font-semibold text-gray-800">Pedidos</h3>
+              </div>
+              <div className="text-center">
+                <p className="text-lg font-semibold text-gray-800 mb-4">Vía Email o WhatsApp</p>
+                <div className="flex flex-col md:flex-row justify-center gap-4">
+                  <button 
+                    onClick={() => handleEmailClick('pedido')}
+                    className="bg-filcam-teal text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors duration-300 font-semibold"
+                  >
+                    Email: filtrosfilcam@hotmail.com
+                  </button>
+                  <a 
+                    href="https://wa.me/5493415151970"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors duration-300 font-semibold"
+                  >
+                    WhatsApp: +54 9 341 515-1970
+                  </a>
                 </div>
               </div>
             </div>
