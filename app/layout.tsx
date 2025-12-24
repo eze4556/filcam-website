@@ -5,6 +5,16 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import ClientWrapper from '@/components/client-wrapper'
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+  ],
+  colorScheme: 'light',
+}
+
 export const metadata: Metadata = {
   title: 'Filcam Distribuidora - Filtros Industriales y Automotrices',
   description: 'Distribuidor oficial de filtros industriales, automotrices y elementos filtrantes con más de 40 años de experiencia. Filtros de aceite, combustible, aire e hidráulicos.',
@@ -15,15 +25,6 @@ export const metadata: Metadata = {
   generator: 'Next.js',
   applicationName: 'Filcam Website',
   referrer: 'origin-when-cross-origin',
-  colorScheme: 'light',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-  ],
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
   verification: {
     google: 'tu-codigo-verificacion-google', // Agregar código de Google Search Console
   },
